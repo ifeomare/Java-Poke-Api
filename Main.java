@@ -1,7 +1,3 @@
-// import org.json.simple.JSONArray;
-// import org.json.simple.JSONObject;
-// import org.json.simple.parser.JSONParser;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
@@ -12,6 +8,7 @@ class Main {
   public static void main(String[] args) {
     try{
       URL url = new URL("https://pokeapi.co/api/v2/pokemon/");
+      // URL url = new URL("https://pokeapi.co/api/v2/pokemon?limit=20&offset=20");
       HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
       conn.setRequestMethod("GET");
@@ -25,39 +22,21 @@ class Main {
       }
       else{
         // System.out.println("Steady Connection: " + responseCode);
+
+        
         StringBuilder infoString = new StringBuilder();
         Scanner scan = new Scanner(url.openStream());
 
         while(scan.hasNext())
           infoString.append(scan.nextLine());
         scan.close();
-        
 
-        // System.out.println(infoString);
         Reader r1 = new Reader(infoString); //infoString is now different
-        // System.out.println(r1.cleanup(infoString));
-        System.out.println(r1);
-
-        //next steps
-        //clean up infoString
-        // convert infoString to an arraylist
-        
-
-
-
-
-          
+        // System.out.println(r1.getArr().length);
+        Converter c1 = new Converter(r1.getArr());
+        System.out.println(c1);
+        System.out.println(c1.getAL());
       }
-
-
-
-
-
-
-
-
-
-      
     }
     catch(Exception e){
       e.printStackTrace();
@@ -68,35 +47,7 @@ class Main {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//first method - I wonder why it didn't work
 // JSONParser parse = new JSONParser();
         // Object obj = parse.parse(infoString.toString());
         // JSONArray array = new JSONArray();

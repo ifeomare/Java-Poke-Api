@@ -1,4 +1,4 @@
-//cleans the data up
+//cleans the data up - done
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Reader{
@@ -23,6 +23,10 @@ public class Reader{
     return data;
   }
 
+  public String[] getArr(){
+    return arr;
+  }
+  
   public String toString(){
     String l = "";
     for (String r : arr){

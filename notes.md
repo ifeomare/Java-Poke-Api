@@ -29,3 +29,6 @@
   * append the data into `infoString`
 * close Scanner
 * see what infoString now looks like
+
+
+.clone() returns a shallow copy of ArrayList => returns an object, not an ArrayList
